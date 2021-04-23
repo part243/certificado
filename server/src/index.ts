@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
-import certificadosRoutes from './routes/certificadosRoutes';
+import cursosRoutes from './routes/cursosRoutes';
 
 
 class Server {
@@ -24,7 +24,7 @@ class Server {
     
     routes(): void {
         this.app.use('/', indexRoutes);
-        this.app.use('/certificados',certificadosRoutes);
+        this.app.use('/cursos',cursosRoutes);
     }
     
     start(): void {

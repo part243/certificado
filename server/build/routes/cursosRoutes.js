@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const cursosController_1 = require("../controllers/cursosController");
-class cursosRoutes {
+class CursosRoutes {
     constructor() {
         this.router = express_1.Router();
         this.config();
@@ -15,5 +15,5 @@ class cursosRoutes {
         this.router.put('/:id', cursosController_1.cursosController.update);
     }
 }
-const cursosRoutes = new cursosRoutes();
+const cursosRoutes = new CursosRoutes();
 exports.default = cursosRoutes.router;
