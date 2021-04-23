@@ -5,12 +5,13 @@ import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import cursosRoutes from './routes/cursosRoutes';
 import participanteRoutes from './routes/participanteRoutes';
+import certificadosRoutes from './routes/certificadosRoutes';
 
 class Server {
     public app: Application;
     constructor(){
         this.app = express();
-        this.config();
+        this.config(); 
         this.routes();
     }
 
@@ -26,6 +27,7 @@ class Server {
         this.app.use('/', indexRoutes);
         this.app.use('/cursos',cursosRoutes);
         this.app.use('/participante',participanteRoutes);
+        this.app.use('/certificado', certificadosRoutes);
     }
     
     start(): void {

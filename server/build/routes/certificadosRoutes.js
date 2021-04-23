@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const cursosController_1 = require("../controllers/cursosController");
-class cursosRoutes {
+const certificadosController_1 = require("../controllers/certificadosController");
+class CertificadosRoutes {
     constructor() {
         this.router = express_1.Router();
         this.config();
     }
     config() {
-        this.router.get('/', cursosController_1.cursosController.list);
-        this.router.get('/:id', cursosController_1.cursosController.listOne);
-        this.router.post('/', cursosController_1.cursosController.create);
-        this.router.delete('/:id', cursosController_1.cursosController.delete);
-        this.router.put('/:id', cursosController_1.cursosController.update);
+        this.router.get('/', certificadosController_1.certificadosController.list);
+        this.router.get('/:id', certificadosController_1.certificadosController.listOne);
+        this.router.post('/', certificadosController_1.certificadosController.create);
+        this.router.delete('/:id', certificadosController_1.certificadosController.delete);
+        this.router.put('/:id', certificadosController_1.certificadosController.update);
     }
 }
-const cursosRoutes = new cursosRoutes();
-exports.default = cursosRoutes.router;
+const certificadosRoutes = new CertificadosRoutes();
+exports.default = certificadosRoutes.router;
