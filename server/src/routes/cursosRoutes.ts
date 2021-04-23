@@ -1,5 +1,5 @@
 import { Router } from  'express';
-import  {cursosController}  from '../controllers/cursosController'
+import  {cursosController}  from '../controllers/cursosController';
 
 class CursosRoutes {
     public router: Router = Router();
