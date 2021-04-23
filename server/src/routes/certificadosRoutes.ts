@@ -1,4 +1,5 @@
 import { Router } from  'express';
+import  {certificadosController}  from '../controllers/certificadosController'
 
 class CertificadosRoutes {
     public router: Router = Router();
@@ -8,7 +9,7 @@ class CertificadosRoutes {
     }
     
     config(): void {
-        this.router.get('/', (req, res) => res.send('Certificados'));
+        this.router.get('/', certificadosController.index);
     }
 }
 
