@@ -15,7 +15,7 @@ class ParticipanteController {
 
     //lista participante por numero de cédula
     public async listOne(req: Request,res: Response):Promise<any>{
-        const participante = await db.query('select * from participante where cedula_participante = ?;', req.params.id);
+        const participante = await db.query('select * from participante where cedula_participante = ? ;', req.params.cedula_participante);
         if(participante.length > 0){
             return res.json(participante);
         }
@@ -25,8 +25,18 @@ class ParticipanteController {
 
     public async create (req: Request, res: Response): Promise<any> {
         console.log(req.body); //cuando angular envie datos será a travez de aquí
-        const query = await db.query('insert into participante set ?', [req.body]);
-        return res.json(query);
+        let d = req.body;
+        let message: any;
+        let q1 = await db.query( ` select * from participante where cedula_participante = ? and id_curso = ? ;`,[d.cedula_participante,d.id_curso]);
+        console.log(q1);
+        if (q1.length > 0){
+            return res.json({message:'datos actualizados'});
+        }else{
+            console.log('grabo');
+            const query = await db.query('insert into participante set ?', [req.body]);
+            return res.json(query);
+        }
+        
 
     }
 

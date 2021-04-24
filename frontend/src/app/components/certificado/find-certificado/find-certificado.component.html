@@ -1,0 +1,48 @@
+
+<div class="mt-5"></div>
+<h2 class="display-4 text-center" > Descargar Certificados</h2>
+<div class="mt-5"></div>
+
+<div class="row">
+    <div class="col-12">
+        <form>
+            <div class="input-group">
+              <input type="text" 
+                     id="cip" 
+                     class="form-control rounded-pill" 
+                     placeholder="Cédula/Pasaporte"
+                     required
+                     [(ngModel)]="cip"
+                     [ngModelOptions]="{standalone: true}"
+                     >
+    
+                    <button class="btn btn-outline" href="#" role="button" (click)="findcip()">
+                        <i class="fas fa-search fa-2x"></i>
+                    </button>
+            </div>
+        </form> 
+    </div>
+</div>
+
+<table class="table table-hover" *ngIf="show">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" colspan="2">Nombre</th>
+        <th scope="col" colspan="2">Curso</th>
+        <th scope="col">Resultado</th>
+        <th scope="col">Enlace</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of datos; let c = index">
+        <th scope="row">{{ c + 1}}</th>
+        <td colspan="2">{{item.nombres_dparticipante}} {{item.apellidos__dparticipante}}</td>
+        <td colspan="2">{{item.Nombre_curso}} </td>
+        <td >{{item.resultado == 1 ? 'Aprobado' : 'Asistencia'}}</td>
+        <td><a href="{{item.enlace_certificado}}">Descargar</a></td>
+      </tr>
+      
+    </tbody>
+  </table>
+

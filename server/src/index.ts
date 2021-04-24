@@ -6,7 +6,7 @@ import indexRoutes from './routes/indexRoutes';
 import cursosRoutes from './routes/cursosRoutes';
 import participanteRoutes from './routes/participanteRoutes';
 import certificadosRoutes from './routes/certificadosRoutes';
-
+import datosparticipanteRoutes from './routes/datosparticipante';
 class Server {
     public app: Application;
     constructor(){
@@ -26,8 +26,10 @@ class Server {
     routes(): void {
         this.app.use('/', indexRoutes);
         this.app.use('/cursos',cursosRoutes);
-        this.app.use('/participante',participanteRoutes);
         this.app.use('/certificado', certificadosRoutes);
+        this.app.use('/participante',participanteRoutes);
+        this.app.use('/datosparticipante',datosparticipanteRoutes);
+
     }
     
     start(): void {

@@ -1,0 +1,137 @@
+<div class="mt-3"></div>
+<h1 class="display-3 text-center" >Cursos disponibles</h1>
+<p class="lead text-center">
+    La Capacitación nunca ha sido un gasto, la verdadera Capacitación siempre es una inversión.
+  </p>
+
+  <p class="text-white bg-info  text-center" *ngIf="MessageInscripcion != ''">
+    {{MessageInscripcion}}
+  </p>
+
+
+<div class="mt-2"></div>
+<div class="row">
+    <div class="col-xs-7 col-sm-6 col-lg-4 d-flex align-items-stretch mt-4 mb-4" *ngFor="let item of cursos; let x = index">
+        <div class="card ">
+            <img src="{{item.Imagen_curso}}" height="200px"  class="card-img-top" alt="...">
+            <div class="card-body" >
+              <h5 class="card-title">{{item.Nombre_curso}}</h5>
+              <p class="card-text text-justify">{{item.descripcion_curso}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                  <h6>Requisitos</h6>
+                  <p class="text-justify">
+                      {{item.requisitos_curso}}
+                  </p>
+              </li>
+              <li class="list-group-item"><b>Fecha de inicio: </b> <span>{{item.FInicio_curso}}</span></li>
+              <li class="list-group-item"><b>Fecha de fin: </b> <span>{{item.FFin_curso}}</span></li>
+            </ul>
+            <div class="card-body text-center">
+             <!-- <a href="#{{item.id_curso}}" class="center">Incribirse</a>
+               <a href="#" class="card-link">Another link</a> -->
+               <button class="btn btn-link btn-lg" (click)="open(content,item.id_curso,x)">Inscríbete</button>
+  
+            </div>
+          </div>
+          <div class="mt-5"></div>
+    </div>
+  </div>
+
+
+  
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header bg-dark">
+      <h4 class="modal-title text-info" id="modal-basic-title">Inscríbete en el curso</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h5 class="lead" class="fs-5 text-center text-dark"><strong> {{CursoRegistro}}</strong></h5>
+      <form>
+
+        <div class="form-group">
+            <small id="search" class="form-text text-muted text-center">Si ya tiene usuario o desea actualizar sus datos, puede utilizar el campo buscar.</small>
+            <div class="input-group mb-2">
+              <input 
+              [(ngModel)]="datos.id_findcedula"
+              type="text" id="search" name="search" class="form-control" placeholder="Para buscar debe ingresar su identificación" aria-label="search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-1">
+            <input type="text" id="identificacion" name="identificacion" class="form-control"
+                   placeholder="Cédula o pasaporte" 
+                   aria-label="Identificación" 
+                   aria-describedby="basic-addon2"
+                   [(ngModel)]="datos.id_dparticipante"
+                   >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-1">
+            <input type="text" id="nombre" name="nombre" class="form-control"
+                   placeholder="Nombres completos" 
+                   aria-label="Nombres completos" 
+                   aria-describedby="basic-addon2"
+                   [(ngModel)]="datos.nombres_dparticipante"
+                   >
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group mb-1">
+            <input type="text" id="apellido" name="apellido" class="form-control"
+                   placeholder="Apellidos completos" 
+                   aria-label="Apellidos completos" 
+                   aria-describedby="basic-addon2"
+                   [(ngModel)]="datos.apellidos__dparticipante"
+                   >
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group mb-1">
+            <input type="text" id="telefono" name="telefono" class="form-control"
+                   placeholder="Teléfono de contacto" 
+                   aria-label="Teléfono de contacto" 
+                   aria-describedby="basic-addon2"
+                   [(ngModel)]="datos.telefono_dparticipante">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group mb-1">
+            <input type="text" id="email" name="email" class="form-control"
+                   placeholder="Email" 
+                   aria-label="Email" 
+                   aria-describedby="basic-addon2"
+                   [(ngModel)]="datos.email_dparticipante">
+          </div>
+        </div>
+
+
+
+      </form>
+    </div>
+    <div class="modal-footer bg-dark">
+      <p class="text-info float-left">{{Message}}</p>
+      <button type="button" class="btn btn-outline-light" (click)="modal.close('Save click')">Inscribirme</button>
+    </div>
+  </ng-template>
+  
+ 
+
+  
+
+
+
+

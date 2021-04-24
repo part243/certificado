@@ -28,7 +28,7 @@ class ParticipanteController {
     //lista participante por numero de cédula
     listOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const participante = yield database_1.default.query('select * from participante where cedula_participante = ?;', req.params.id);
+            const participante = yield database_1.default.query('select * from participante where cedula_participante = ? ;', req.params.cedula_participante);
             if (participante.length > 0) {
                 return res.json(participante);
             }
@@ -38,8 +38,18 @@ class ParticipanteController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body); //cuando angular envie datos será a travez de aquí
-            const query = yield database_1.default.query('insert into participante set ?', [req.body]);
-            return res.json(query);
+            let d = req.body;
+            let message;
+            let q1 = yield database_1.default.query(` select * from participante where cedula_participante = ? and id_curso = ? ;`, [d.cedula_participante, d.id_curso]);
+            console.log(q1);
+            if (q1.length > 0) {
+                return res.json({ message: 'datos actualizados' });
+            }
+            else {
+                console.log('grabo');
+                const query = yield database_1.default.query('insert into participante set ?', [req.body]);
+                return res.json(query);
+            }
         });
     }
     delete(req, res) {
