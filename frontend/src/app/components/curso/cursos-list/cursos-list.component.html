@@ -10,34 +10,59 @@
 
 
 <div class="mt-2"></div>
-<div class="row">
-    <div class="col-xs-7 col-sm-6 col-lg-4 d-flex align-items-stretch mt-4 mb-4" *ngFor="let item of cursos; let x = index">
-        <div class="card ">
-            <img src="{{item.Imagen_curso}}" height="200px"  class="card-img-top" alt="...">
-            <div class="card-body" >
-              <h5 class="card-title">{{item.Nombre_curso}}</h5>
-              <p class="card-text text-justify">{{item.descripcion_curso}}</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                  <h6>Requisitos</h6>
-                  <p class="text-justify">
-                      {{item.requisitos_curso}}
-                  </p>
-              </li>
-              <li class="list-group-item"><b>Fecha de inicio: </b> <span>{{item.FInicio_curso}}</span></li>
-              <li class="list-group-item"><b>Fecha de fin: </b> <span>{{item.FFin_curso}}</span></li>
-            </ul>
-            <div class="card-body text-center">
-             <!-- <a href="#{{item.id_curso}}" class="center">Incribirse</a>
-               <a href="#" class="card-link">Another link</a> -->
-               <button class="btn btn-link btn-lg" (click)="open(content,item.id_curso,x)">Inscríbete</button>
+
+<div class="cards">
+
   
-            </div>
-          </div>
-          <div class="mt-5"></div>
+
+
+
+  <div class="card" *ngFor="let item of cursos; let x = index">
+    <div class="card__image-holder">
+      <img class="card__image" src="{{item.Imagen_curso}}" alt="field" />
+    </div>
+    <div class="card-title">
+      <a href="#" class="toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+      <h2>
+        {{item.Nombre_curso}}
+          <small><strong>Auspiciantes: </strong>UTLVTE</small>
+      </h2>
+    </div>
+    <div class="card-flap flap1">
+      <div class="card-description">
+      
+          <p class="text-justify">{{item.descripcion_curso}} </p>
+          <p class="text-justify">
+            <b>Requisitos</b> <br>
+              {{item.requisitos_curso}}
+          
+          </p>
+          
+          <p class="text-justify">
+            <b>Fecha de inicio: </b> <span>{{item.FInicio_curso}}</span><br>
+            <b>Fecha de fin: </b> <span>{{item.FFin_curso}}</span>
+          </p>
+      </div>
+      <div class="card-flap flap2">
+        <div class="card-actions">
+          <a href="#" class="btn" (click)="open(content,item.id_curso,x)">Inscribirme</a>
+        </div>
+      </div>
     </div>
   </div>
+
+ 
+
+
+</div>
+
+
+
+
+
 
 
   
@@ -53,7 +78,7 @@
     <div class="modal-body">
       <h5 class="lead" class="fs-5 text-center text-dark"><strong> {{CursoRegistro}}</strong></h5>
       <form>
-
+      <!-- 
         <div class="form-group">
             <small id="search" class="form-text text-muted text-center">Si ya tiene usuario o desea actualizar sus datos, puede utilizar el campo buscar.</small>
             <div class="input-group mb-2">
@@ -67,7 +92,7 @@
               </div>
             </div>
         </div>
-
+-->
         <div class="form-group">
           <div class="input-group mb-1">
             <input type="text" id="identificacion" name="identificacion" class="form-control"
@@ -129,9 +154,49 @@
   </ng-template>
   
  
-
-  
-
-
-
-
+<script>
+      $(document).ready(function(){
+      var zindex = 10;
+      
+      $("div.card").click(function(e){
+        e.preventDefault();
+        console.log('click');
+        var isShowing = false;
+    
+        if ($(this).hasClass("show")) {
+          isShowing = true
+        }
+    
+        if ($("div.cards").hasClass("showing")) {
+          // a card is already in view
+          $("div.card.show")
+            .removeClass("show");
+    
+          if (isShowing) {
+            // this card was showing - reset the grid
+            $("div.cards")
+              .removeClass("showing");
+          } else {
+            // this card isn't showing - get in with it
+            $(this)
+              .css({zIndex: zindex})
+              .addClass("show");
+    
+          }
+    
+          zindex++;
+    
+        } else {
+          // no cards in view
+          $("div.cards")
+            .addClass("showing");
+          $(this)
+            .css({zIndex:zindex})
+            .addClass("show");
+    
+          zindex++;
+        }
+        
+      });
+    });
+</script>
