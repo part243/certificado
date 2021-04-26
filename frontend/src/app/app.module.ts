@@ -17,6 +17,7 @@ import { InscribeteComponent } from './components/inscribete/inscribete.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CertificadoFormComponent,
     CursosListComponent,
     FindCertificadoComponent,
-    InscribeteComponent
+    InscribeteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

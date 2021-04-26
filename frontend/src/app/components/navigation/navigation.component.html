@@ -1,26 +1,22 @@
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg " style="background-color: #292b2c;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Cursos UTELVT</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <a class="navbar-brand" href="#">
+        <img src="https://i.ibb.co/rfkYbR8/vinculacion.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        CURSOS UTLVTE
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon"> <i class="fas fa-bars" style="color:rgb(82, 82, 82); font-size:28px;"></i></span>
       </button>
       
       <div class="collapse navbar-collapse" id="navbarText">
-        
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 list-group" id="grouplist1" >
-          
-   
-
-          
-   
-          <li class="nav-item" *ngFor="let item of groupList" (click)="select(i)" 
-         >
-        
-          <a class="nav-link " aria-current="page" href="{{item.ruta}}"  >{{item.nombre}}</a>
-    </li>
-
-
+          <li class="nav-item" *ngFor="let item of groupList" (click)="select(i)">
+         
+              <a class="nav-link " aria-current="page" href="{{item.ruta}}"  >{{item.nombre}}</a>
+          </li>
+          <!--
           <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Login
@@ -30,15 +26,13 @@
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                   </ul>
           </li>
-
+      -->
         </ul>
-        <P>
-
-        </P>
-
-
-
-
       </div>
+      <a class="navbar-brand" href="#">
+        Sede Santo Domingo - La Concordia
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/ESCUDETO_UTE-LVT.png" alt="" width="50px" height="50px">
+      </a>
+
     </div>
   </nav>
