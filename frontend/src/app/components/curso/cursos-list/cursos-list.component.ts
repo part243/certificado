@@ -8,7 +8,7 @@ import { Curso } from '../../models/Cerificado';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { InscripcionService } from 'src/app/services/inscripcion.service';
-
+declare var $: any;
 
 @Component({
   selector: 'app-cursos-list',
@@ -21,6 +21,7 @@ export class CursosListComponent implements OnInit {
   CursoRegistro = '';
   Message= '';
   MessageInscripcion= '';
+  
 
   datos = {
     id_findcedula:'',
@@ -43,8 +44,52 @@ export class CursosListComponent implements OnInit {
       err => console.error(err)
     );
 
-
-
+      /** efecto jquery para las cards */
+    $(document).ready(function(){
+      var zindex = 10;
+      
+      $("div.card").click(function(e){
+        e.preventDefault();
+        console.log('click');
+        var isShowing = false;
+    
+        if ($(this).hasClass("show")) {
+          isShowing = true
+        }
+    
+        if ($("div.cards").hasClass("showing")) {
+          // a card is already in view
+          $("div.card.show")
+            .removeClass("show");
+    
+          if (isShowing) {
+            // this card was showing - reset the grid
+            $("div.cards")
+              .removeClass("showing");
+          } else {
+            // this card isn't showing - get in with it
+            $(this)
+              .css({zIndex: zindex})
+              .addClass("show");
+    
+          }
+    
+          zindex++;
+    
+        } else {
+          // no cards in view
+          $("div.cards")
+            .addClass("showing");
+          $(this)
+            .css({zIndex:zindex})
+            .addClass("show");
+    
+          zindex++;
+        }
+        
+      });
+    });
+    
   }
 
   open(content,idCurso,index) {

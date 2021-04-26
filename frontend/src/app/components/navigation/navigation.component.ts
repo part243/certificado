@@ -18,8 +18,8 @@ export class NavigationComponent implements OnInit {
         nombre: 'Certificados'
       },
       {
-        ruta: '/fcertificate/add',
-        nombre: 'Otros'
+        ruta: '/login',
+        nombre: 'Iniciar sesión'
       }
 
     ];
